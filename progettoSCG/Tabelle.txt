@@ -1,0 +1,14 @@
+clienti{Nr (varchar 20), CodCondizioniPagam (int 10), FattCumulative (varchar 20), Valuta ( int 10)}
+consumi{NrMovimento (int 10), BudgetConsuntivo (varchar 20), TipoMovimento (varchar 20), CodiceMP (varchar 20), TipoOrigine (varchar 20), NrArticolo (varchar 20), NrDocumento (varchar 20), QuantitaMPImpiegata (int 10), ImportoCostoTotale (double)}
+costoorariorisorsebudget{Risorsa (varchar 20), AreaDiProduzione (varchar 20), CostoOrario (double)}
+costoorariorisorseconsuntivo{Risorsa (varchar 20), AreaDiProduzione (varchar 20), CostoOrario (double)}
+impiegoorariorisorse{NrArticolo (varchar 20), BudgetConsuntivo (varchar 20), NrOrdineDiProduzione (varchar 20), Descrizione (varchar 20), NrAreaDiProduzione (varchar 20), Risorsa (varchar 20), TempoRisorsa (double), QuantitaDiOutput (int 10)}
+tassidicambio{CodiceValuta (int 10), Anno (varchar 20), TassoDiCambioMedio (double)}
+vendite{NrMovimento (int 10), BudgetConsuntivo (varchar 20), TipoMovimento (varchar 20), NrArticolo (varchar 20), TipoOrigine (varchar 20), NrOrigine (varchar 20), Quantita (int 10), TotaleVendita (double)}
+
+
+
+
+
+
+SISTEMARE VALORI DOUBLE DI VENDITE!!!!!!

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Scostamento Mix {{t}}{% endblock %}
+
+{% block content %}
+<h1>Scostamento Mix {{t}}</h1>
+<h3>Delta: {{ delta }}€</h3>
+<div id='graficoMix' class='grafico'></div>
+<table id="tabella">
+	<thead>
+		<td>Codice Articolo</td>
+		<td>Budget</td>
+		<td>Scostamento</td>
+		<td>Consuntivo</td>
+	</thead>
+	{% for x in p %}
+		<tr>
+			{% for y in x %}
+				{% if loop.index==1 %}	
+					<td id="tdXY">{{ y }}</td>
+				{% else %}
+					<td id="tdXY">{{ y }}%</td>
+				{% endif %}
+			{% endfor %}
+		</tr>
+	{% endfor %}
+</table>
+
+<script>
+
+	var x = [{% for x in p %}
+		{{ x[2] }},
+	{% endfor %}];
+
+	var trace = {
+		x: x,
+		type: 'histogram',
+		nbinsx: 100,
+		marker: {
+		color: 'rgba(159, 168, 218,0.7)',
+		},
+	};
+
+	var data = [trace];
+
+	var layout = {
+		title: 'Istogramma Scostamenti Mix',
+		showlegend: false,
+		bargap: 0.02,
+		xaxis: {title: "Valore(%)"}, 
+  		yaxis: {title: "Numero Articoli"}
+	};
+
+	Plotly.newPlot('graficoMix', data, layout, {staticPlot: true});
+
+</script>
+	
+{% endblock %}
+

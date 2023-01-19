@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Analisi Degli Scostamenti{% endblock %}
+
+{% block content %}
+
+<h1>Analisi Degli Scostamenti</h1>
+<table id="tabellaScostamenti">
+	<thead>
+		<td></td>
+		<td>Budget</td>
+		<td>Delta</td>
+		<td>Mix standard</td>
+		<td>Delta</td>
+		<td>Mix effettivo</td>
+		<td>Delta</td>
+		<td>Consuntivo</td>
+	</thead>
+		
+	{% for x in range(0, 5) %}
+		<tr>
+			{% if x==0 %}<td id="tdX">Materiale diretto</td>{% endif %}
+			{% if x==1 %}<td id="tdX">Lavoro diretto</td>{% endif %}
+			{% if x==2 %}<td id="tdX">Costi totali</td>{% endif %}
+			{% if x==3 %}<td id="tdX">Ricavi totali</td>{% endif %}
+			{% if x==4 %}<td id="tdX">Margine</td>{% endif %}
+			<td id="tdXY" class = "tdXY">{{ p[0][x] }}€</td>
+			{% if x == 4 %}
+				<td id="tdXY" class = "tdXYSel" onclick='location.href="/scostamentoVolumi"' title="Scostamento Volumi">{{ (p[1][x]-p[0][x])|round(2) }}€</td>
+			{% else %}
+				<td id="tdXY" class = "tdXYSel" onclick='location.href="/scostamentoVolumi"' title="Scostamento Volumi">{{ (p[1][x]-p[0][x])|round(2) }}€ ({{ ((p[1][x]-p[0][x])/p[0][x]*100)|round(2) }}%)</td>
+			{% endif %}
+			<td id="tdXY" class = "tdXY">{{ p[1][x] }}€</td>
+			
+			{% if x < 3 %}
+				<td id="tdXY" class = "tdXYSel" onclick='location.href="/scostamentoMixCosto"' title="Scostamento Mix Costo">{{ (p[2][x]-p[1][x])|round(2) }}€ ({{ ((p[2][x]-p[1][x])/p[1][x]*100)|round(2) }}%)</td>
+			{% elif x == 3%}
+				<td id="tdXY" class = "tdXYSel" onclick='location.href="/scostamentoMixVendita"' title="Scostamento Mix Ricavi">{{ (p[2][x]-p[1][x])|round(2) }}€ ({{ ((p[2][x]-p[1][x])/p[1][x]*100)|round(2) }}%)</td>
+			{% elif x == 4 %}
+				<td id="tdXY" class = "tdXY">{{ (p[2][x]-p[1][x])|round(2) }}€</td>
+			{% else %}
+				<td id="tdXY" class = "tdXY">{{ (p[2][x]-p[1][x])|round(2) }}€ ({{ ((p[2][x]-p[1][x])/p[1][x]*100)|round(2) }}%)</td>
+			{% endif %}
+
+			<td id="tdXY" class = "tdXY">{{ p[2][x] }}€</td>
+
+			{% if x == 0 %}
+				<td id="tdXY" class = "tdXYSel" onclick='location.href="/scostamentoMD"' title="Scostamento Materiale Diretto">{{ (p[3][x]-p[2][x])|round(2) }}€ ({{ ((p[3][x]-p[2][x])/p[2][x]*100)|round(2) }}%)</td>
+			{% elif x == 1 %}
+				<td id="tdXY" class = "tdXYSel" onclick='location.href="/scostamentoLD"' title="Scostamento Lavoro Diretto">{{ (p[3][x]-p[2][x])|round(2) }}€ ({{ ((p[3][x]-p[2][x])/p[2][x]*100)|round(2) }}%)</td>
+			{% elif x == 2 %}
+				<td id="tdXY" class = "tdXYSel" onclick='location.href="/scostamentoCosti"' title="Scostamento Costi">{{ (p[3][x]-p[2][x])|round(2) }}€ ({{ ((p[3][x]-p[2][x])/p[2][x]*100)|round(2) }}%)</td>
+			{% elif x == 3 %}
+				<td id="tdXY" class = "tdXYSel" onclick='location.href="/scostamentoPrezzo"' title="Scostamento Ricavi">{{ (p[3][x]-p[2][x])|round(2) }}€ ({{ ((p[3][x]-p[2][x])/p[2][x]*100)|round(2) }}%)</td>
+			{% elif x == 4 %}
+				<td id="tdXY" class = "tdXY">{{ (p[3][x]-p[2][x])|round(2) }}€</td>
+			{% else %}
+				<td id="tdXY" class = "tdXY">{{ (p[3][x]-p[2][x])|round(2) }}€ ({{ ((p[3][x]-p[2][x])/p[2][x]*100)|round(2) }}%)</td>
+			{% endif %}
+
+			<td id="tdXY" class = "tdXY">{{ p[3][x] }}€</td>
+		</tr>
+	{% endfor %}
+		
+</table>
+<br><br>
+<p><i>Passando sopra alcune celle degli scostamenti in tabella le farà cambiare colore. Ciò indica la possibilità di aprire una pagina relativa allo scostamento in questione cliccandoci sopra</i></p>
+	
+{% endblock %}

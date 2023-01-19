@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Lista Finali Articoli{% endblock %}
+
+{% block content %}
+<h1>Scostamento Volumi</h1>
+<table id="tabellaScostamenti">
+	<thead>
+		<td></td>
+		<td>Budget</td>
+		<td>Scostamento</td>
+		<td>Consuntivo</td>
+	</thead>
+	{% for x in volumi %}
+		<tr>
+			{% if loop.index==1 %}<td id="tdX">Volume Costi</td>{% endif %}
+			{% if loop.index==2 %}<td id="tdX">Volume Vendite</td>{% endif %}
+			<td id="tdXY">{{ x[0]|round(2) }}</td>
+			<td id="tdXY">{{ (x[1] - x[0])|round(2) }} ({{delta_volumi[loop.index - 1]}}€)</td>
+			<td id="tdXY">{{ x[1]|round(2) }}</td>
+		</tr>
+	{% endfor %}
+</table>
+
+	
+{% endblock %}

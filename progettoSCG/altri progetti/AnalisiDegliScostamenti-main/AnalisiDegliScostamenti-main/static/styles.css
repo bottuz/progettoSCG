@@ -1,0 +1,158 @@
+body {
+    font-family: Tahoma, Geneva, sans-serif;
+    color: #212121;
+	margin: 0;
+}
+
+.ulNav {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background-color: #7986CB;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: +1;
+}
+  
+.liNav {
+	float: left;
+}
+  
+.liNav a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 18px 20px;
+	text-decoration: none;
+	font-weight: bold;
+}
+  
+.liNav a:hover:not(.active) {
+	background-color: #5C6BC0;
+}
+
+
+.container {
+    padding: 20px;
+	margin-top: 40px;
+}
+
+#tabellaScostamenti {
+	border-collapse: collapse;
+    font-family: Tahoma, Geneva, sans-serif;
+	width: 100%;
+}
+#tabellaScostamenti td {
+	padding: 15px;
+}
+  
+#tabellaScostamenti thead td {
+	background-color: #9FA8DA;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 13px;
+	border: 1px solid #9FA8DA;
+
+    border-left: 1px solid #EEEEEE;
+    border-right: 1px solid #EEEEEE;
+    border-bottom: 1px solid #EEEEEE;
+    position: relative;
+}
+
+#tdX {
+    background-color: #9FA8DA;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 13px;
+	border: 1px solid #9FA8DA;
+
+	border-top: 1px solid #EEEEEE;
+    border-bottom: 1px solid #EEEEEE;
+    padding: 10px 15px;
+    position: relative;
+}
+
+
+#tdXY {
+	color: #636363;
+	border: 1px solid #dddfe1;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.tdXYSel:hover {
+    background-color: #C5CAE9;
+	cursor: pointer;
+}
+
+.tdXY:hover {
+    background-color: #EEEEEE;
+}
+
+#tabella {
+	border-collapse: collapse;
+    font-family: Tahoma, Geneva, sans-serif;
+	width: 100%;
+}
+#tabella td {
+	padding: 15px;
+}
+  
+#tabella thead td {
+	background-color: #9FA8DA;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 13px;
+	border: 1px solid #9FA8DA;
+
+    border-left: 1px solid #EEEEEE;
+    border-right: 1px solid #EEEEEE;
+    border-bottom: 1px solid #EEEEEE;
+    position: relative;
+}
+
+#tabella tbody tr {
+	background-color: #f9fafb;
+}
+#tabella tbody tr:nth-child(odd) {
+	background-color: #ffffff;
+}
+
+#tabella tbody tr:hover {
+	background-color: #EEEEEE;
+}
+
+.btn {
+	background-color: #9FA8DA; /* Green */
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+}
+
+.btn:hover {
+	background-color: #7986CB;
+	cursor: pointer;
+}
+
+.grafico {
+	height: 500px;
+	width: 90%;
+	margin: auto;
+}
+
+.clickList:hover {
+	cursor: pointer;
+}
+
+p {
+    display: inline;
+}

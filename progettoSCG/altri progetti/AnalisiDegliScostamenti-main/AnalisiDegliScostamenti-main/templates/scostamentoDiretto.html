@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Scostamento {{t}}{% endblock %}
+
+{% block content %}
+<h1>Scostamento {{t}}</h1>
+<h3>Delta: {{ delta }}€</h3>
+<div id='graficoDiretto' class='grafico'></div>
+<table id="tabella">
+	<thead>
+		<td>Codice Articolo</td>
+		<td>Quantità</td>
+		<td>Scostamento</td>
+		<td>Budget Unitario</td>
+		<td>Scostamento Unitario</td>
+		<td>Consuntivo Unitario</td>
+	</thead>
+	{% for x in p %}
+		<tr>
+			{% for y in x %}
+				<td id="tdXY">{{ y }}{% if loop.index >= 3 %}€{% endif %}</td>
+			{% endfor %}
+		</tr>
+	{% endfor %}
+</table>
+
+<script>
+
+	var x = [{% for x in p %}
+		{{ x[4] }},
+	{% endfor %}];
+
+	var trace = {
+		x: x,
+		type: 'histogram',
+		nbinsx: 100,
+		marker: {
+		color: 'rgba(159, 168, 218,0.7)',
+		},
+	};
+
+	var data = [trace];
+
+	var layout = {
+		title: 'Istogramma Scostamento {{t}} Unitario',
+		showlegend: false,
+		bargap: 0.02,
+		xaxis: {title: "Valore(€)"}, 
+  		yaxis: {title: "Numero Articoli"}
+	};
+
+	Plotly.newPlot('graficoDiretto', data, layout, {staticPlot: true});
+
+</script>
+
+	
+{% endblock %}
+

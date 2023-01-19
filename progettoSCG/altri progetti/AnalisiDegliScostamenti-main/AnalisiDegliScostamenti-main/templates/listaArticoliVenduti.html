@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Lista Articoli Venduti{% endblock %}
+
+{% block content %}
+<h1>Lista Articoli Venduti</h1>
+<table id="tabella">
+	<thead>
+		<td>Codice Articolo</td>
+		<td>Scostamento Finale</td>
+	</thead>
+	{% for x in p %}
+		<tr class="clickList" onclick='location.href="/articoloSpecifico?codiceArticolo={{ x[0] }}"'>
+			<td id="tdXY">{{ x[0] }}</td>
+			<td id="tdXY">{{ x[1] }}€</td>
+		</tr>
+	{% endfor %}
+</table>
+
+	
+{% endblock %}
